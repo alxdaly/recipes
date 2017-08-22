@@ -1,7 +1,7 @@
 var express = require("express");
 var app = express();
 var router = express.Router();
-var path = _dirname + '/views/';
+var path = __dirname + '/views/';
 
 router.use((req, res, next) => {
   console.log("/" + req.method);
@@ -9,7 +9,7 @@ router.use((req, res, next) => {
 });
 
 router.get("/", (req, res) => {
-  res.sendFile(path + "index.html");
+  res.sendFile(path + "index.html");  //Built-in functino in ExpressJS, designed to send files to a web browser
 });
 
 router.get("/about", (req, res) => {
@@ -20,7 +20,7 @@ router.get("/contact", (req, res) => {
   res.sendFile(path + "contact.html");
 });
 
-app.use("/", router);
+app.use("/", router);                 //Tells Express to use Routes
 
 app.use("*", (req, res) => {
   res.sendFile(path + "404.html");
